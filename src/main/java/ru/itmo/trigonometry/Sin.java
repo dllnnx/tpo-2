@@ -13,7 +13,7 @@ public class Sin implements MathFunction {
         BigDecimal term = x;
         int n = 1;
 
-        while (term.compareTo(eps) > 0) {
+        while (term.abs().compareTo(eps) > 0) {
             result = result.add(term, MathConfig.MATH_CONTEXT);
 
             BigDecimal numerator = term.multiply(x.pow(2), MathConfig.MATH_CONTEXT).negate();
