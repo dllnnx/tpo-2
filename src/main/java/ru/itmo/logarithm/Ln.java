@@ -14,11 +14,11 @@ public class Ln implements MathFunction {
             throw new ArithmeticException(format("Натуральный логарифм не имеет значения при x = %s", x));
         }
 
-        if (x.compareTo(BigDecimal.ZERO) == 0) {
+        if (x.compareTo(BigDecimal.ONE) == 0) {
             return BigDecimal.ZERO;
         }
 
-        BigDecimal y = x.subtract(BigDecimal.ONE).divide(BigDecimal.ONE, MathConfig.MATH_CONTEXT);
+        BigDecimal y = x.subtract(BigDecimal.ONE).divide(x.add(BigDecimal.ONE), MathConfig.MATH_CONTEXT);
         BigDecimal y2 = y.multiply(y, MathConfig.MATH_CONTEXT);
 
         BigDecimal term = y;
