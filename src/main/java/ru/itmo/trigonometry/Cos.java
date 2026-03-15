@@ -9,7 +9,7 @@ public class Cos implements MathFunction {
 
     private final MathFunction sin;
 
-    private static final BigDecimal HALF_PI = new BigDecimal(Math.PI / 2, MathConfig.MATH_CONTEXT);
+    private static final BigDecimal HALF_PI = new BigDecimal("1.57079632679489661923");
 
     public Cos(MathFunction sin) {
         this.sin = sin;
@@ -17,6 +17,6 @@ public class Cos implements MathFunction {
 
     @Override
     public BigDecimal calc(BigDecimal x, BigDecimal eps) {
-        return sin.calc(HALF_PI.subtract(x), eps);
+        return sin.calc(HALF_PI.subtract(x, MathConfig.MATH_CONTEXT), eps);
     }
 }
