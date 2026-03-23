@@ -17,7 +17,6 @@ public class LogTest implements BaseLogTest {
     private final MathFunction log2 = new Log(ln, new BigDecimal("2"));
     private final MathFunction log3 = new Log(ln, new BigDecimal("3"));
     private final MathFunction log5 = new Log(ln, new BigDecimal("5"));
-    private final MathFunction log7 = new Log(ln, new BigDecimal("7"));
     private final MathFunction log10 = new Log(ln, new BigDecimal("10"));
 
     @ParameterizedTest
@@ -62,21 +61,6 @@ public class LogTest implements BaseLogTest {
     void log5_matches_reference(String xs, String expectedS) {
         BigDecimal x = new BigDecimal(xs);
         BigDecimal actual = log5.calc(x, eps);
-        BigDecimal expected = new BigDecimal(expectedS);
-        assertClose(expected, actual, tol);
-    }
-
-    @ParameterizedTest
-    @CsvSource({
-            "0.142857, -1.0",
-            "1.0, 0",
-            "7.0, 1.0",
-            "49.0, 2.0",
-            "343.0, 3.0"
-    })
-    void log7_matches_reference(String xs, String expectedS) {
-        BigDecimal x = new BigDecimal(xs);
-        BigDecimal actual = log7.calc(x, eps);
         BigDecimal expected = new BigDecimal(expectedS);
         assertClose(expected, actual, tol);
     }

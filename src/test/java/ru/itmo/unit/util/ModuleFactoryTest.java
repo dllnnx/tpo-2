@@ -27,6 +27,7 @@ public class ModuleFactoryTest {
             "ln, Ln",
             "log2, Log",
             "log3, Log",
+            "log5, Log",
             "log10, Log",
             "system, MathSystem"
     })

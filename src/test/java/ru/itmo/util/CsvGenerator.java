@@ -15,17 +15,16 @@ import java.util.List;
 public class CsvGenerator {
 
     private static final List<BigDecimal> DEFAULT_XS = List.of(
-            new BigDecimal("-3.0"),
-            new BigDecimal("-1.0"),
-            new BigDecimal("-0.5"),
-            new BigDecimal("-0.2"),
-            new BigDecimal("-0.1"),
+            new BigDecimal("-0.77777"),
+            new BigDecimal("-2.54218"),
+            new BigDecimal("-2.63702"),
+            new BigDecimal("-2.72534"),
+            new BigDecimal("-3.81645"),
+            new BigDecimal("-3.80470"),
             new BigDecimal("0.1"),
-            new BigDecimal("0.2"),
-            new BigDecimal("0.5"),
-            new BigDecimal("1.0"),
+            new BigDecimal("2.0"),
             new BigDecimal("3.0"),
-            new BigDecimal("10.0")
+            new BigDecimal("7.0")
     );
 
     public static void main(String[] args) throws Exception {
@@ -49,18 +48,17 @@ public class CsvGenerator {
         MathFunction tan = new Tan(sin, cos);
         MathFunction cotan = new Cotan(sin, cos);
         MathFunction sec = new Sec(cos);
-        MathFunction cosec = new Cosec(cos);
+        MathFunction cosec = new Cosec(sin);
 
         MathFunction ln = new Ln();
         MathFunction log2 = new Log(ln, new BigDecimal("2"));
         MathFunction log3 = new Log(ln, new BigDecimal("3"));
         MathFunction log5 = new Log(ln, new BigDecimal("5"));
-        MathFunction log7 = new Log(ln, new BigDecimal("7"));
         MathFunction log10 = new Log(ln, new BigDecimal("10"));
 
         MathFunction system = new MathSystem(
                 sin, cos, tan, cotan, sec, cosec,
-                ln, log2, log3, log5, log7, log10
+                log2, log3, log5, log10
         );
 
         writeCsv(xs, sin, eps, outputDir.resolve("sin.csv"));
@@ -74,10 +72,9 @@ public class CsvGenerator {
         writeCsv(xs, log2, eps, outputDir.resolve("log2.csv"));
         writeCsv(xs, log3, eps, outputDir.resolve("log3.csv"));
         writeCsv(xs, log5, eps, outputDir.resolve("log5.csv"));
-        writeCsv(xs, log7, eps, outputDir.resolve("log7.csv"));
         writeCsv(xs, log10, eps, outputDir.resolve("log10.csv"));
 
-        writeCsv(xs, system, eps, outputDir.resolve("system_expected.csv"));
+        writeCsv(xs, system, eps, outputDir.resolve("system.csv"));
     }
 
     private static void writeCsv(

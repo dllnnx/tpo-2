@@ -21,10 +21,9 @@ public class ModuleFactory {
         MathFunction log2 = new Log(ln, new BigDecimal("2"));
         MathFunction log3 = new Log(ln, new BigDecimal("3"));
         MathFunction log5 = new Log(ln, new BigDecimal("5"));
-        MathFunction log7 = new Log(ln, new BigDecimal("7"));
         MathFunction log10 = new Log(ln, new BigDecimal("10"));
 
-        MathFunction system = new MathSystem(sin, cos, tan, cotan, sec, cosec, ln, log2, log3, log5, log7, log10);
+        MathFunction system = new MathSystem(sin, cos, tan, cotan, sec, cosec, log2, log3, log5, log10);
 
         return switch (name.toLowerCase()) {
             case "sin" -> sin;
@@ -38,7 +37,6 @@ public class ModuleFactory {
             case "log2" -> log2;
             case "log3" -> log3;
             case "log5" -> log5;
-            case "log7" -> log7;
             case "log10" -> log10;
 
             case "system" -> system;
