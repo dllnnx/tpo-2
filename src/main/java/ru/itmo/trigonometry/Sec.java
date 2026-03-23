@@ -20,7 +20,7 @@ public class Sec implements MathFunction {
         BigDecimal c = cos.calc(x, eps);
 
         if (c.abs().compareTo(eps) < 0) {
-            throw new ArithmeticException(format("У секанса нет значения при x = %s", x));
+            throw new IllegalArgumentException(format("У секанса нет значения при x = %s", x));
         }
 
         return BigDecimal.ONE.divide(c, MathConfig.MATH_CONTEXT);

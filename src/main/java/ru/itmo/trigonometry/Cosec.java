@@ -20,7 +20,7 @@ public class Cosec implements MathFunction {
         BigDecimal s = sin.calc(x, eps);
 
         if (s.abs().compareTo(eps) < 0) {
-            throw new ArithmeticException(format("У косеканса нет значения при x = %s", x));
+            throw new IllegalArgumentException(format("У косеканса нет значения при x = %s", x));
         }
 
         return BigDecimal.ONE.divide(s, MathConfig.MATH_CONTEXT);

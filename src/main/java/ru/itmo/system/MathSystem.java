@@ -5,6 +5,8 @@ import ru.itmo.util.MathConfig;
 
 import java.math.BigDecimal;
 
+import static java.lang.String.format;
+
 public class MathSystem implements MathFunction {
 
     private static final BigDecimal HALF_PI = new BigDecimal("1.57079632679489661923");
@@ -65,7 +67,7 @@ public class MathSystem implements MathFunction {
                 .divide(cotX.multiply(tanX, MathConfig.MATH_CONTEXT), MathConfig.MATH_CONTEXT);
 
         BigDecimal part2 = cotX
-                .add(secX, MathConfig.MATH_CONTEXT)
+                .add(cosecX, MathConfig.MATH_CONTEXT)
                 .add(cotX, MathConfig.MATH_CONTEXT)
                 .add(secX, MathConfig.MATH_CONTEXT)
                 .add(cosX, MathConfig.MATH_CONTEXT)
@@ -83,6 +85,10 @@ public class MathSystem implements MathFunction {
                 .add((
                         tanX.pow(2, MathConfig.MATH_CONTEXT).pow(3, MathConfig.MATH_CONTEXT).pow(3, MathConfig.MATH_CONTEXT)
                 ));
+
+        if (denominator.abs().compareTo(eps) < 0) {
+            throw new ArithmeticException(format("У системы нет значения при x = %s", x));
+        }
 
         return numerator
                 .divide(denominator, MathConfig.MATH_CONTEXT)
